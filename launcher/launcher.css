@@ -1,0 +1,114 @@
+/* Portal — biblioteca de dois jogos. Identidade própria: azul-noturno, latão,
+   poeira de biblioteca. Cada card comunica uma experiência diferente. */
+:root {
+  --bg: #0a0d14;
+  --bg-2: #0e1220;
+  --card: #12161f;
+  --line: #242c3c;
+  --text: #c9d2df;
+  --dim: #8b96a6;
+  --brass: #c9b23c;
+  --brass-dim: #8d7c2a;
+  --rust: #7a4a42;
+  --green: #7fa08f;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background:
+    radial-gradient(1200px 500px at 70% -10%, rgba(201,178,60,0.06), transparent 60%),
+    radial-gradient(900px 420px at 15% 110%, rgba(90,110,150,0.08), transparent 55%),
+    linear-gradient(180deg, var(--bg-2), var(--bg));
+  color: var(--text);
+  font-family: Georgia, 'Times New Roman', serif;
+  min-height: 100vh;
+}
+.portal { max-width: 1060px; margin: 0 auto; padding: 46px 26px 60px; }
+
+.portal-header { display: flex; align-items: center; gap: 18px; margin-bottom: 42px; }
+.portal-logo { width: 64px; height: 64px; filter: drop-shadow(0 6px 16px rgba(201,178,60,.15)); }
+.portal-header h1 {
+  margin: 0; font-size: 26px; letter-spacing: .3em; font-weight: normal;
+  color: var(--text);
+}
+.portal-sub { margin: 6px 0 0; color: var(--dim); font-style: italic; font-size: 14px; letter-spacing: .06em; }
+
+.shelf {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 30px;
+}
+
+.game-card {
+  background: linear-gradient(180deg, #141926 0%, var(--card) 60%);
+  border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+  cursor: pointer; position: relative;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.game-card:hover, .game-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(201,178,60,.45);
+  box-shadow: 0 26px 60px rgba(0,0,0,.55), 0 0 0 1px rgba(201,178,60,.12);
+  outline: none;
+}
+.card-rewind:hover { box-shadow: 0 26px 60px rgba(0,0,0,.55), 0 0 42px rgba(201,178,60,.10); }
+.card-linha:hover { box-shadow: 0 26px 60px rgba(0,0,0,.55), 0 0 42px rgba(127,160,143,.10); }
+
+.cover-wrap { position: relative; height: 300px; overflow: hidden; }
+.cover-wrap img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: saturate(.9) contrast(1.02);
+  transition: transform .6s ease, filter .6s ease;
+}
+.game-card:hover .cover-wrap img { transform: scale(1.045); filter: saturate(1.05) contrast(1.05); }
+.cover-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,13,20,.05) 40%, rgba(13,17,26,.85) 100%);
+}
+.tag {
+  position: absolute; top: 14px; left: 14px;
+  font-family: 'Courier New', monospace; font-size: 10.5px; letter-spacing: .18em;
+  padding: 5px 10px; border-radius: 3px; text-transform: uppercase;
+}
+.tag-meta { background: rgba(201,178,60,.14); color: var(--brass); border: 1px solid rgba(201,178,60,.4); }
+.tag-analog { background: rgba(127,160,143,.14); color: var(--green); border: 1px solid rgba(127,160,143,.4); }
+.continue-badge {
+  position: absolute; top: 14px; right: 14px;
+  font-family: 'Courier New', monospace; font-size: 10.5px; letter-spacing: .14em;
+  background: rgba(20,26,38,.85); color: var(--text);
+  border: 1px solid var(--brass-dim); border-radius: 3px; padding: 5px 10px;
+}
+
+.card-body { padding: 22px 24px 26px; }
+.card-body h2 { margin: 0 0 6px; font-size: 21px; letter-spacing: .12em; font-weight: normal; color: var(--text); }
+.card-rewind h2 { text-shadow: 0 0 24px rgba(201,178,60,.25); }
+.card-linha h2 { text-shadow: 0 0 24px rgba(127,160,143,.25); }
+.genre { margin: 0 0 12px; font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: .1em; color: var(--dim); text-transform: uppercase; }
+.desc { margin: 0 0 14px; font-size: 14.5px; line-height: 1.55; color: #aeb7c4; }
+.meta-line { margin: 0 0 18px; font-size: 12px; color: var(--dim); font-style: italic; }
+.play-btn {
+  width: 100%; padding: 13px 16px;
+  background: linear-gradient(180deg, #1d2536, #141b28);
+  color: var(--brass); border: 1px solid rgba(201,178,60,.5); border-radius: 8px;
+  font-family: 'Courier New', monospace; font-size: 13.5px; letter-spacing: .22em;
+  cursor: pointer; transition: background .3s ease, box-shadow .3s ease, color .3s ease;
+}
+.play-btn:hover { background: #242e44; color: #e5d78a; box-shadow: 0 0 22px rgba(201,178,60,.14); }
+.card-linha .play-btn { color: var(--green); border-color: rgba(127,160,143,.5); }
+.card-linha .play-btn:hover { box-shadow: 0 0 22px rgba(127,160,143,.14); color: #a8c4b6; }
+
+.portal-footer { margin-top: 52px; border-top: 1px solid var(--line); padding-top: 20px; }
+.foot-note { margin: 0 0 10px; color: var(--dim); font-size: 12.5px; line-height: 1.6; }
+.foot-note code { color: var(--brass-dim); font-size: 12px; }
+.foot-links { margin: 0; font-size: 13px; color: var(--dim); }
+.foot-links a { color: #aeb7c4; text-decoration: none; border-bottom: 1px dotted var(--line); }
+.foot-links a:hover { color: var(--brass); border-color: var(--brass); }
+
+@media (max-width: 940px) {
+  .shelf { grid-template-columns: 1fr; }
+  .cover-wrap { height: 240px; }
+}
+@media (max-width: 560px) {
+  .portal { padding: 28px 16px 40px; }
+  .portal-header h1 { font-size: 19px; letter-spacing: .18em; }
+  .cover-wrap { height: 190px; }
+}

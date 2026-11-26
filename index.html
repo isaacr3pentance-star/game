@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca de Terror — dois jogos</title>
+<link rel="stylesheet" href="launcher/launcher.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23101420'/%3E%3Ccircle cx='16' cy='14' r='6' fill='%23c9b23c'/%3E%3Crect x='14.5' y='18' width='3' height='9' fill='%235d4433'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="portal">
+  <header class="portal-header">
+    <svg class="portal-logo" viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="6" y="6" width="52" height="52" rx="10" fill="none" stroke="#2b3342" stroke-width="2"/>
+      <circle cx="32" cy="26" r="11" fill="#c9b23c" opacity="0.85"/>
+      <rect x="29.5" y="34" width="5" height="16" rx="2" fill="#5d4433"/>
+      <path d="M32 12 L32 4" stroke="#8d7c2a" stroke-width="2"/>
+    </svg>
+    <div>
+      <h1>BIBLIOTECA DE TERROR</h1>
+      <p class="portal-sub">duas experiências independentes, uma pequena biblioteca</p>
+    </div>
+  </header>
+
+  <main class="shelf">
+    <article class="game-card card-rewind" id="card-rewind" tabindex="0" role="button" aria-label="Abrir REWIND REWIND">
+      <div class="cover-wrap">
+        <img id="cover-rewind" alt="Capa de REWIND // REWIND: um farol solitário na tempestade">
+        <div class="cover-veil"></div>
+        <span class="tag tag-meta">narrativa meta</span>
+        <span id="rewind-continue" class="continue-badge hidden">continuar</span>
+      </div>
+      <div class="card-body">
+        <h2>REWIND // REWIND</h2>
+        <p class="genre">terror psicológico · mistério · 2D top-down</p>
+        <p class="desc">Uma vigia de farol que sabe que morreu. Um quarto com câmera fixa.
+        O X falso na janela rebobina o tempo — e cada rebobinada cobra uma lembrança dela.</p>
+        <p class="meta-line">1h30–2h · 7 rotas · 8 puzzles · 2 finais + variações</p>
+        <button class="play-btn" data-game="rewind" type="button">JOGAR REWIND</button>
+      </div>
+    </article>
+
+    <article class="game-card card-linha" id="card-linha" tabindex="0" role="button" aria-label="Abrir LINHA MORTA">
+      <div class="cover-wrap">
+        <img id="cover-linha" alt="Capa de LINHA MORTA: um painel de central telefônica com cabos">
+        <div class="cover-veil"></div>
+        <span class="tag tag-analog">terror analógico</span>
+        <span id="linha-continue" class="continue-badge hidden">continuar</span>
+      </div>
+      <div class="card-body">
+        <h2>LINHA MORTA</h2>
+        <p class="genre">terror analógico · central telefônica · procedimento</p>
+        <p class="desc">Cinco turnos numa central manual de 197X. Conecte as chamadas seguindo
+        o manual — e ignore a lâmpada que acende sem ficha. Ignore. Se conseguir.</p>
+        <p class="meta-line">35–55 min · 5 turnos · mecanismo de fio aberto · 4 finais</p>
+        <button class="play-btn" data-game="linha" type="button">JOGAR LINHA MORTA</button>
+      </div>
+    </article>
+  </main>
+
+  <footer class="portal-footer">
+    <p class="foot-note">Os dois jogos salvam de forma independente no seu navegador
+    (REWIND: <code>rewind_*</code> · LINHA MORTA: <code>second_horror_*</code>).
+    Nenhum dado sai do seu navegador. Nenhum spoiler nesta página.</p>
+    <p class="foot-links">
+      <a href="games/rewind/index.html">REWIND // REWIND</a>
+      <span aria-hidden="true">·</span>
+      <a href="games/second-horror/index.html">LINHA MORTA</a>
+      <span aria-hidden="true">·</span>
+      <a href="docs/PROJECT_OVERVIEW.md">sobre a biblioteca</a>
+    </p>
+  </footer>
+</div>
+
+<script src="launcher/covers.js"></script>
+<script src="launcher/launcher.js"></script>
+</body>
+</html>
