@@ -247,7 +247,7 @@ t('recado.txt contém data local e rebobinadas', function () {
   assert(txt.indexOf('RECADO') >= 0);
   assert(txt.indexOf('Rebobinadas próprias nesta sessão: 8') >= 0);
   assert(txt.indexOf('anexo secreto') >= 0);
-  assert(/\d{2}\/\d{2}\/\d{4}/.test(txt));
+  assert(/\d{2}\x2F\d{2}\x2F\d{4}/.test(txt));
 });
 
 console.log('== Anti-softlock ==');
