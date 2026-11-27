@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>LINHA MORTA — testes de lógica (navegador)</title>
+<style>
+  body { background: #10141c; color: #c3cdc7; font-family: monospace; padding: 24px; }
+  h1 { color: #c9b23c; font-size: 18px; }
+  .ok { color: #6a8a5d; } .fail { color: #cf8a83; }
+</style>
+</head>
+<body>
+<h1>LINHA MORTA — suíte de lógica (navegador)</h1>
+<div id="out"></div>
+<script src="../src/namespace.js"></script>
+<script src="../src/state.js"></script>
+<script src="../src/save.js"></script>
+<script src="../src/logic.js"></script>
+<script src="../src/data.js"></script>
+<script src="../src/audio.js"></script>
+<script>
+(function () {
+  'use strict';
+  var out = document.getElementById('out');
+  var passed = 0, failed = 0;
+  function log(c, t) { var p = document.createElement('div'); p.className = c; p.textContent = t; out.appendChild(p); }
+  function assert(c, m) { if (!c) throw new Error(m || 'falhou'); }
+  function t(name, fn) {
+    try { fn(); passed++; log('ok', 'ok  - ' + name); }
+    catch (e) { failed++; log('fail', 'FAIL - ' + name + ' :: ' + e.message); }
+  }
+  var S = LM.State, L = LM.Logic, D = LM.Data;
+  t('namespaces carregados', function () { assert(S && L && D && LM.Board && LM.Night); });
+  t('ordem do manual com cores e números', function () {
+    var tk = [{ id: 'a', num: 8, color: 'vermelha' }, { id: 'b', num: 2, color: 'vermelha' }, { id: 'c', num: 1, color: 'azul' }];
+    assert(JSON.stringify(L.correctOrder(tk)) === JSON.stringify(['c', 'b', 'a']));
+  });
+  t('pares cruzados proibidos', function () { assert(L.isForbiddenPair(7, 8) && L.isForbiddenPair(8, 7) && !L.isForbiddenPair(1, 2)); });
+  t('apito identifica a linha morta', function () {
+    var p = [{ freq: 1000, noise: 0.1 }, { freq: 0 }, { freq: 1000, noise: 0.2 }];
+    assert(L.findDeadLine(p) === 1);
+  });
+  t('armário: azul, azul, vermelha, azul', function () { assert(L.validateChips(L.CHIP_SOLUTION)); });
+  t('finais computam', function () {
+    var s = S.defaults(); s.night = 5;
+    assert(L.computeEnding(s, 'cut', false).id === 'REGRA');
+    assert(L.computeEnding(s, 'connect', false).id === 'LINHA');
+  });
+  t('conteúdo dos cinco turnos', function () {
+    for (var n = 1; n <= 5; n++) { assert(D.ticketsByNight[n].length >= 3 && D.deadLineEvents[n].options.length >= 2); }
+  });
+  t('seis indícios completam o segredo', function () {
+    var s = S.defaults();
+    Object.keys(D.ivoneClues).forEach(function (k) { S.addFact(s, k); });
+    assert(S.ivoneReady(s));
+  });
+  var sum = document.createElement('div');
+  sum.textContent = 'Resultado: ' + passed + ' passaram, ' + failed + ' falharam';
+  out.appendChild(sum);
+})();
+</script>
+</body>
+</html>
