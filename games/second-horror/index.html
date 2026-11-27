@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LINHA MORTA</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<div id="app" class="app-shell">
+  <div class="stage-wrap">
+    <div class="window-chrome">
+      <div class="chrome-left">
+        <span class="chrome-dot"></span>
+        <span id="night-badge" class="chrome-title">LINHA MORTA</span>
+      </div>
+      <div class="chrome-right">
+        <button id="btn-mute" class="chrome-btn" type="button">som: on</button>
+        <button id="btn-settings" class="chrome-btn" type="button">config</button>
+        <a class="chrome-btn" href="../../index.html">voltar ao portal</a>
+      </div>
+    </div>
+
+    <div id="stage" class="stage">
+      <div class="board-wrap">
+        <div class="board-furniture">
+          <button id="btn-quadro" class="furniture-btn" type="button">quadro de bilhetes</button>
+          <button id="btn-bandeja" class="furniture-btn" type="button">fichas antigas</button>
+          <button id="btn-caderno" class="furniture-btn" type="button">gaveta do registrador</button>
+          <button id="btn-apito" class="furniture-btn" type="button">apito de teste</button>
+        </div>
+        <svg id="board" viewBox="0 0 1200 700" class="board-svg" role="img" aria-label="Painel de jacks da central telefônica"></svg>
+        <div id="tray" class="tray"></div>
+      </div>
+    </div>
+
+    <div id="terminal" class="terminal hidden">
+      <div class="term-head">
+        <span class="term-who">MANUAL</span>
+        <button class="term-next" type="button">continuar ▸</button>
+      </div>
+      <p class="term-text"></p>
+    </div>
+
+    <div id="choices" class="choices hidden"></div>
+    <div id="caption" class="caption hidden"></div>
+  </div>
+
+  <div id="panel" class="panel hidden"></div>
+  <div id="settings-modal" class="modal hidden"></div>
+</div>
+
+<script src="src/namespace.js"></script>
+<script src="src/state.js"></script>
+<script src="src/save.js"></script>
+<script src="src/logic.js"></script>
+<script src="src/data.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/terminal.js"></script>
+<script src="src/board.js"></script>
+<script src="src/night.js"></script>
+<script src="src/endings.js"></script>
+<script src="src/ui.js"></script>
+<script src="src/embedded.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
