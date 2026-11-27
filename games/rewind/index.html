@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REWIND // REWIND</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+<div id="app" class="app-shell">
+  <div id="stage-wrap" class="stage-wrap">
+    <div class="window-chrome">
+      <div class="chrome-left">
+        <span class="chrome-dot"></span>
+        <span id="win-title" class="chrome-title">REWIND // REWIND</span>
+      </div>
+      <div class="chrome-right">
+        <button id="btn-mute" class="chrome-btn" type="button" aria-label="Alternar som">som: on</button>
+        <button id="btn-history" class="chrome-btn" type="button" title="Histórico de conversas" aria-label="Histórico de conversas">histórico</button>
+        <button id="btn-settings" class="chrome-btn" type="button" title="Configurações" aria-label="Configurações">config</button>
+        <button id="btn-talk" class="chrome-btn" type="button" title="Conversar com Vela" aria-label="Conversar com Vela">conversar</button>
+        <button id="fake-x" class="chrome-x" type="button" title="Fechar a janela" aria-label="Fechar a janela">✕</button>
+      </div>
+    </div>
+
+    <div id="stage" class="stage" role="img" aria-label="Quarto do farol visto de cima; objetos interativos são anunciados ao focar"></div>
+
+    <div id="caption" class="caption hidden" role="status" aria-live="polite"></div>
+
+    <div id="dialog-box" class="dialog-box hidden" role="dialog" aria-label="Conversa">
+      <div class="dialog-head">
+        <span id="dialog-name" class="dialog-name">VELA</span>
+        <button class="dlg-continue" type="button" aria-label="Continuar conversa">continuar ▸</button>
+      </div>
+      <p id="dialog-text" class="dialog-text" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div id="panel" class="panel hidden"></div>
+  <div id="settings-modal" class="modal hidden"></div>
+  <div id="history-modal" class="modal hidden"><div class="settings-card"><h3>Histórico de conversas</h3><div id="history-content" class="history-content"></div></div></div>
+  <div id="dev-panel" class="modal hidden"><div class="settings-card" id="dev-card"></div></div>
+
+  <div id="rewindfx" class="rewindfx hidden">
+    <div class="fake-desktop">
+      <div class="fake-wallpaper"></div>
+      <div class="fake-icons">
+        <span class="fake-icon">REWIND // REWIND</span>
+        <span class="fake-icon">legacy.save</span>
+      </div>
+      <div class="fake-taskbar">
+        <span class="fake-start">iniciar</span>
+        <span class="fake-clock"></span>
+      </div>
+    </div>
+    <div class="flash"></div>
+  </div>
+</div>
+
+<script src="src/namespace.js"></script>
+<script src="src/core/state.js"></script>
+<script src="src/core/save.js"></script>
+<script src="src/core/audio.js"></script>
+<script src="src/core/rewind.js"></script>
+<script src="src/narrative/data.js"></script>
+<script src="src/narrative/dialog.js"></script>
+<script src="src/narrative/memories.js"></script>
+<script src="src/narrative/routes.js"></script>
+<script src="src/puzzles/puzzles.js"></script>
+<script src="src/environment/painter.js"></script>
+<script src="src/environment/room.js"></script>
+<script src="src/interface/ui.js"></script>
+<script src="src/endings/endings.js"></script>
+<script src="src/embedded.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
